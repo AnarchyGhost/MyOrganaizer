@@ -44,7 +44,7 @@ public class NotificationService extends Service {
     Parser parser=new Parser();
     Timer timer;
     TimerTask tTask;
-    long interval = 300000;
+    long interval = 1000;
     Timer timer1;
     TimerTask tTask1;
     long interval1 = 1000;
@@ -63,6 +63,7 @@ public class NotificationService extends Service {
                     List<Notes> notes=new ArrayList<>();
                     dbHelper=new DBHelper(NotificationService.this);
                     database=dbHelper.getReadableDatabase();
+                    Log.d("TIMER",""+parser.getDateTime());
                     Cursor cursor=null;
                         try {
                             cursor = database.query(DBHelper.TB_NAME, null, KEY_DATE +
@@ -139,7 +140,7 @@ public class NotificationService extends Service {
                     }
             };
 
-            timer.schedule(tTask, 30000, interval);
+            timer.schedule(tTask, 1000, 600000);
     }
     void schedule1() {
         if (tTask1 != null) tTask1.cancel();
@@ -185,7 +186,7 @@ public class NotificationService extends Service {
                                                     .setPriority(PRIORITY_HIGH)
                                                     .setDefaults(Notification.DEFAULT_SOUND);
                                     createChannelIfNeeded(notificationManager);
-                                    notificationManager.notify(birthday.getId(), notificationBuilder.build());
+                                    notificationManager.notify(birthday.getId()+10000, notificationBuilder.build());
                                     break;
                 }
                 database.close();
@@ -193,7 +194,7 @@ public class NotificationService extends Service {
             }
         };
 
-        timer1.schedule(tTask1, 1000, interval);
+        timer1.schedule(tTask1, 1001, 432000000);
     }
 
     public static void createChannelIfNeeded(NotificationManager manager) {
