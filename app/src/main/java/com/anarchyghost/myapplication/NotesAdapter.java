@@ -164,13 +164,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder>{
 
 
 
-    public List<Notes> getNotes(DBHelper dbHelper,String data) throws ParseException {
+    public List<Notes> getNotes(DBHelper dbHelper,String data,boolean done) throws ParseException {
         List<Notes> notes=new ArrayList<>();
         String data1=data;
         SQLiteDatabase database=dbHelper.getReadableDatabase();
-        Cursor cursor=database.query(DBHelper.TB_NAME,null, KEY_DATE +
-                " = "+ parser.parseToMillDate(data1)+" AND ("+KEY_TYPE+" = "+TYPE_LESSON+" OR "+KEY_TYPE+" = "+TYPE_TODO+")",null,null,null,KEY_TIMEBEG,null);
-
+        Cursor cursor;
+        if(done) {
+            cursor = database.query(DBHelper.TB_NAME, null, KEY_DATE +
+                    " = " + parser.parseToMillDate(data1) + " AND (" + KEY_TYPE + " = " + TYPE_LESSON + " OR " + KEY_TYPE + " = " + TYPE_TODO + ")", null, null, null, KEY_TIMEBEG, null);
+        } else{
+            cursor = database.query(DBHelper.TB_NAME, null, KEY_DATE +
+                    " < " + parser.parseToMillDate(data1) + " AND (" + "("+KEY_TYPE + " = " + TYPE_LESSON + " AND "+KEY_TEXT+" > "+"''"+") OR " + KEY_TYPE + " = " + TYPE_TODO + ")"+" AND "+KEY_ISDONE+" = 0", null, null, null, KEY_DATE+","+KEY_TIMEBEG, null);
+        }
 
 
         if(cursor.moveToFirst()){

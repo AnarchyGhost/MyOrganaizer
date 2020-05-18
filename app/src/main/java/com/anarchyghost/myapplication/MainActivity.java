@@ -96,7 +96,7 @@ Parser parser;
         recyclerView.setAdapter(notesAdapter);
         List<Notes> installedApps = null;
         try {
-            installedApps = notesAdapter.getNotes(dbHelper,parser.getDate());
+            installedApps = notesAdapter.getNotes(dbHelper,parser.getDate(),true);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -194,6 +194,8 @@ Parser parser;
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            Intent intent=new Intent(this,NotDoneActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -202,7 +204,7 @@ Parser parser;
 
 
     private void reloadApps() throws ParseException {
-        List<Notes> installedApps = notesAdapter.getNotes(dbHelper,chosendata);
+        List<Notes> installedApps = notesAdapter.getNotes(dbHelper,chosendata,true);
 
         notesAdapter.setApps(installedApps);
         notesAdapter.notifyDataSetChanged();
