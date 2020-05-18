@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Органайзер</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="first">Заметка</string>
+    <string name="second">Пара</string>
+    <string name="thrd">Дело</string>
+    <string name="save">Сохранить</string>
+    <string name="inputtext">Текст заметки</string>
+    <string name="addtodo">Добавить дело</string>
+    <string name="addlesson">Добавить урок</string>
+    <string name="nametodo">Название дела</string>
+    <string name="title">Подробное описание</string>
+    <string name="Lesson">Урок</string>
+    <string name="title_dialog_attachment_variants">Куку</string>
+    <string-array name="array_types">
+        <item>@string/first</item>
+        <item>@string/second</item>
+        <item>@string/thrd</item>
+    </string-array>
+    <string-array name="attachment_variants">
+        <item>Выбрать из галереи</item>
+        <item>Сделать снимок</item>
+    </string-array>
+</resources>
