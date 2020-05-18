@@ -102,6 +102,9 @@ Parser parser;
 
         dbHelper= new DBHelper(this);
 
+       // SQLiteDatabase database=dbHelper.getWritableDatabase();
+       // this.deleteDatabase(DB_NAME);
+
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.shown);
@@ -215,6 +218,9 @@ Parser parser;
             Intent intent=new Intent(this,NotDoneActivity.class);
             startActivity(intent);
             return true;
+        } else {
+            Intent intent=new Intent(this,BirthdayActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

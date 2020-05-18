@@ -44,12 +44,16 @@ public class NotificationService extends Service {
     Parser parser=new Parser();
     Timer timer;
     TimerTask tTask;
-    long interval = 1000;
-
+    long interval = 300000;
+    Timer timer1;
+    TimerTask tTask1;
+    long interval1 = 1000;
     public void onCreate() {
         super.onCreate();
         timer = new Timer();
+        timer1=new Timer();
         schedule();
+        schedule1();
     }
 
     void schedule() {
@@ -57,7 +61,6 @@ public class NotificationService extends Service {
             tTask = new TimerTask() {
                 public void run() {
                     List<Notes> notes=new ArrayList<>();
-
                     dbHelper=new DBHelper(NotificationService.this);
                     database=dbHelper.getReadableDatabase();
                     Cursor cursor=null;
@@ -125,7 +128,6 @@ public class NotificationService extends Service {
                                         createChannelIfNeeded(notificationManager);
                                         notificationManager.notify(note.getId(), notificationBuildere.build());
                                         break;
-
                                 }
                             }
                         } catch (ParseException e) {
@@ -137,7 +139,61 @@ public class NotificationService extends Service {
                     }
             };
 
-            timer.schedule(tTask, 1000, interval);
+            timer.schedule(tTask, 30000, interval);
+    }
+    void schedule1() {
+        if (tTask1 != null) tTask1.cancel();
+        tTask1 = new TimerTask() {
+            public void run() {
+                Log.d("TAG","Started");
+                List<Birthday> birthdays=new ArrayList<>();
+                dbHelper=new DBHelper(NotificationService.this);
+                database=dbHelper.getReadableDatabase();
+                Cursor cursor=null;
+                try {
+                    cursor = database.query(DBHelper.TB_BD_NAME, null, KEY_DATE +
+                            " = " + parser.parseToMillMonth(parser.getDateMonth()), null, null, null, null, null);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if(cursor.moveToFirst()){
+                    int idIndex=cursor.getColumnIndex(DBHelper.KEY_ID);
+                    int NameIndex=cursor.getColumnIndex(DBHelper.KEY_NAME);
+                    int textDead=cursor.getColumnIndex(DBHelper.KEY_DATE);
+                    do{
+                        Birthday birthday1=new Birthday(cursor.getInt(idIndex),cursor.getString(NameIndex), cursor.getLong(textDead));
+
+                        birthdays.add(birthday1);
+                    }while (cursor.moveToNext());
+                }else{
+                    Log.d("mLog","0 rows");
+                }
+                for(int i=0;i<birthdays.size();i++){
+                            Intent intent=new Intent(new Intent(getApplicationContext(), BirthdayActivity.class));
+                            NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                            Birthday birthday=birthdays.get(i);
+                                    NotificationCompat.Builder notificationBuilder =
+                                            new NotificationCompat.Builder(getApplicationContext(), "channel_id")
+                                                    .setAutoCancel(true)
+                                                    .setSmallIcon(R.drawable.ic_event_note_black_24dp)
+                                                    .setWhen(System.currentTimeMillis())
+                                                    .setContentIntent(pendingIntent)
+                                                    .setContentTitle("Сегодня день рождения!!!!")
+                                                    .setContentText("День рождения у: "+birthday.getName() +", поздравь его!!")
+                                                    .setPriority(PRIORITY_HIGH)
+                                                    .setDefaults(Notification.DEFAULT_SOUND);
+                                    createChannelIfNeeded(notificationManager);
+                                    notificationManager.notify(birthday.getId(), notificationBuilder.build());
+                                    break;
+                }
+                database.close();
+                dbHelper.close();
+            }
+        };
+
+        timer1.schedule(tTask1, 1000, interval);
     }
 
     public static void createChannelIfNeeded(NotificationManager manager) {

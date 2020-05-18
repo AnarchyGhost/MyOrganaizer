@@ -16,7 +16,26 @@ public String getDate() {
         return dateFormat.format(date);
         }
 
-public String getCurDate() {
+        public String getDateMonth() {
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat(
+                        "dd-MM", Locale.getDefault());
+                Date date = new Date();
+                return dateFormat.format(date);
+        }
+
+        public long parseToMillMonth(String d) throws ParseException {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(
+                        "dd-MM", Locale.getDefault());
+                Date moment = dateFormat.parse(d);
+                return moment.getTime();
+        }
+        public String parseToMonth(long d){
+                SimpleDateFormat dateFormat = new SimpleDateFormat(
+                        "dd-MM", Locale.getDefault());
+                return dateFormat.format(d).toString();
+        }
+        public String getCurDate() {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat(
         "yyyy-MM-dd HH:mm", Locale.getDefault());

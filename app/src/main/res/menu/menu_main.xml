@@ -7,4 +7,9 @@
         android:orderInCategory="100"
         android:title="Пропущенные дела"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_birthdays"
+        android:orderInCategory="100"
+        android:title="Дни рождения"
+        app:showAsAction="never" />
 </menu>
