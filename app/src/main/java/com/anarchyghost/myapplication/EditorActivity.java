@@ -58,6 +58,7 @@ int type;
 
         Bundle info=getIntent().getExtras();
         id=info.getInt("id");
+        Log.d("EA",""+id);
 
         dbHelper=new DBHelper(this);
 

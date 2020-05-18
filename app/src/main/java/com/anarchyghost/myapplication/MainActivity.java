@@ -1,6 +1,8 @@
 package com.anarchyghost.myapplication;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,11 +19,14 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,7 +45,7 @@ NotesAdapter notesAdapter;
 RecyclerView recyclerView;
 String chosendata;
 Parser parser;
-
+    boolean bound = false;
     public int getYear(){
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy", Locale.getDefault());
@@ -74,8 +79,21 @@ Parser parser;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //this.deleteDatabase(DB_NAME);
+        ServiceConnection sConn;
+        Intent intent;
+        intent = new Intent(MainActivity.this,NotificationService.class);
+        sConn = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder binder) {
+            Log.d("LOG_TAG", "MainActivity onServiceConnected");
+            bound = true;
+        }
 
+            public void onServiceDisconnected(ComponentName name) {
+                Log.d("LOG_TAG", "MainActivity onServiceDisconnected");
+                bound = false;
+            }
+        };
+        startService(intent);
         parser=new Parser();
         notesAdapter = new NotesAdapter();
         chosendata=parser.getDate();
