@@ -15,26 +15,20 @@ import android.os.IBinder;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.anarchyghost.myapplication.db.DBHelper;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import static android.app.Notification.PRIORITY_HIGH;
-import static android.app.Notification.PRIORITY_LOW;
 import static com.anarchyghost.myapplication.NotesAdapter.TYPE_LESSON;
 import static com.anarchyghost.myapplication.NotesAdapter.TYPE_TODO;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_DATE;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_TIMEBEG;
-import static com.anarchyghost.myapplication.db.DBHelper.KEY_TYPE;
 
 public class NotificationService extends Service {
     final String LOG_TAG = "myLogs";
@@ -147,7 +141,7 @@ public class NotificationService extends Service {
         tTask1 = new TimerTask() {
             public void run() {
                 Log.d("TAG","Started");
-                List<Birthday> birthdays=new ArrayList<>();
+                List<Birthday> birthdays =new ArrayList<>();
                 dbHelper=new DBHelper(NotificationService.this);
                 database=dbHelper.getReadableDatabase();
                 Cursor cursor=null;
@@ -162,19 +156,19 @@ public class NotificationService extends Service {
                     int NameIndex=cursor.getColumnIndex(DBHelper.KEY_NAME);
                     int textDead=cursor.getColumnIndex(DBHelper.KEY_DATE);
                     do{
-                        Birthday birthday1=new Birthday(cursor.getInt(idIndex),cursor.getString(NameIndex), cursor.getLong(textDead));
+                        Birthday birthday1 =new Birthday(cursor.getInt(idIndex),cursor.getString(NameIndex), cursor.getLong(textDead));
 
                         birthdays.add(birthday1);
                     }while (cursor.moveToNext());
                 }else{
                     Log.d("mLog","0 rows");
                 }
-                for(int i=0;i<birthdays.size();i++){
+                for(int i = 0; i< birthdays.size(); i++){
                             Intent intent=new Intent(new Intent(getApplicationContext(), BirthdayActivity.class));
                             NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                            Birthday birthday=birthdays.get(i);
+                            Birthday birthday = birthdays.get(i);
                                     NotificationCompat.Builder notificationBuilder =
                                             new NotificationCompat.Builder(getApplicationContext(), "channel_id")
                                                     .setAutoCancel(true)

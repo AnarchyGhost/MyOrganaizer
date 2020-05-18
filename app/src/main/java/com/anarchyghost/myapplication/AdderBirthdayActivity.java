@@ -3,7 +3,6 @@ package com.anarchyghost.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.anarchyghost.myapplication.db.DBHelper;
 
@@ -25,7 +23,6 @@ import java.text.ParseException;
 import java.util.Calendar;
 
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_ID;
-import static com.anarchyghost.myapplication.db.DBHelper.KEY_TIMEBEG;
 
 public class AdderBirthdayActivity extends AppCompatActivity {
 
@@ -47,7 +44,7 @@ public class AdderBirthdayActivity extends AppCompatActivity {
         type=info.getInt("type");
         id=info.getInt("id");
 
-        if(type==1) birthday=getBD();
+        if(type==1) birthday =getBD();
 
         et_name=(EditText)findViewById(R.id.edit_name);
         if(type==1) et_name.setText(birthday.getName());

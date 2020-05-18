@@ -1,5 +1,6 @@
 package com.anarchyghost.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -35,7 +36,6 @@ import static com.anarchyghost.myapplication.db.DBHelper.KEY_TYPE;
 import static com.anarchyghost.myapplication.db.DBHelper.TB_NAME;
 
 public class EditorActivity extends AppCompatActivity {
-
 DBHelper dbHelper;
 EditText name;
 TextView date;
@@ -56,25 +56,26 @@ int type;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        Bundle info=getIntent().getExtras();
-        id=info.getInt("id");
-        Log.d("EA",""+id);
+        Bundle info = getIntent().getExtras();
+        id = info.getInt("id");
+        Log.d("EA", "" + id);
 
-        dbHelper=new DBHelper(this);
+        dbHelper = new DBHelper(this);
 
-        name=findViewById(R.id.name_redo);
-        date=findViewById(R.id.date_redo);
-        start=findViewById(R.id.start_redo);
-        end=findViewById(R.id.end_redo);
-        title=findViewById(R.id.title_redo);
-        btn=findViewById(R.id.button6);
-        textView=findViewById(R.id.texts);
+        name = findViewById(R.id.name_redo);
+        date = findViewById(R.id.date_redo);
+        start = findViewById(R.id.start_redo);
+        end = findViewById(R.id.end_redo);
+        title = findViewById(R.id.title_redo);
+        btn = findViewById(R.id.button6);
+        textView = findViewById(R.id.texts);
 
-        final Notes note=getNote();
-        type=note.getType();
-        if(note.getType()==NotesAdapter.TYPE_LESSON) {end.setVisibility(View.VISIBLE);
-        textView.setVisibility(View.VISIBLE);
-        title.setHint("Домашнее задание");
+        final Notes note = getNote();
+        type = note.getType();
+        if (note.getType() == NotesAdapter.TYPE_LESSON) {
+            end.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
+            title.setHint("Домашнее задание");
         }
 
         name.setText(note.getName());
@@ -86,13 +87,13 @@ int type;
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendar=Calendar.getInstance();
-                int year= calendar.get(Calendar.YEAR);
-                int month= calendar.get(Calendar.MONTH);
-                int dat=calendar.get(Calendar.DAY_OF_MONTH);
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int dat = calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(EditorActivity.this,R.style.Theme_AppCompat_Dialog , et_date_set,
-                        year,month,dat);
+                DatePickerDialog dialog = new DatePickerDialog(EditorActivity.this, R.style.Theme_AppCompat_Dialog, et_date_set,
+                        year, month, dat);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
@@ -102,13 +103,13 @@ int type;
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendar=Calendar.getInstance();
-                int hour= calendar.get(Calendar.HOUR);
-                int minute= calendar.get(Calendar.MINUTE);
-                int sec=calendar.get(Calendar.SECOND);
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR);
+                int minute = calendar.get(Calendar.MINUTE);
+                int sec = calendar.get(Calendar.SECOND);
 
-                TimePickerDialog dialog = new TimePickerDialog(EditorActivity.this,R.style.Theme_AppCompat_Dialog , et_beg_set,
-                        hour,minute,true);
+                TimePickerDialog dialog = new TimePickerDialog(EditorActivity.this, R.style.Theme_AppCompat_Dialog, et_beg_set,
+                        hour, minute, true);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
@@ -118,64 +119,64 @@ int type;
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendar=Calendar.getInstance();
-                int hour= calendar.get(Calendar.HOUR);
-                int minute= calendar.get(Calendar.MINUTE);
-                int sec=calendar.get(Calendar.SECOND);
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR);
+                int minute = calendar.get(Calendar.MINUTE);
+                int sec = calendar.get(Calendar.SECOND);
 
-                TimePickerDialog dialog = new TimePickerDialog(EditorActivity.this,R.style.Theme_AppCompat_Dialog , et_beg_set,
-                        hour,minute,true);
+                TimePickerDialog dialog = new TimePickerDialog(EditorActivity.this, R.style.Theme_AppCompat_Dialog, et_beg_set,
+                        hour, minute, true);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
         });
-        et_beg_set=new TimePickerDialog.OnTimeSetListener() {
+        et_beg_set = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String nhour=String.valueOf(hourOfDay);
-                String nminute=String.valueOf(minute);
-                if(hourOfDay<10)nhour="0"+nhour;
-                if(minute<10)nminute="0"+nminute;
-                String time=nhour+":"+nminute;
+                String nhour = String.valueOf(hourOfDay);
+                String nminute = String.valueOf(minute);
+                if (hourOfDay < 10) nhour = "0" + nhour;
+                if (minute < 10) nminute = "0" + nminute;
+                String time = nhour + ":" + nminute;
                 start.setText(time);
             }
         };
-        et_beg_set=new TimePickerDialog.OnTimeSetListener() {
+        et_beg_set = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String nhour=String.valueOf(hourOfDay);
-                String nminute=String.valueOf(minute);
-                if(hourOfDay<10)nhour="0"+nhour;
-                if(minute<10)nminute="0"+nminute;
-                String time=nhour+":"+nminute;
+                String nhour = String.valueOf(hourOfDay);
+                String nminute = String.valueOf(minute);
+                if (hourOfDay < 10) nhour = "0" + nhour;
+                if (minute < 10) nminute = "0" + nminute;
+                String time = nhour + ":" + nminute;
                 start.setText(time);
             }
         };
 
-        et_end_set=new TimePickerDialog.OnTimeSetListener() {
+        et_end_set = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String nhour=String.valueOf(hourOfDay);
-                String nminute=String.valueOf(minute);
-                if(hourOfDay<10)nhour="0"+nhour;
-                if(minute<10)nminute="0"+nminute;
-                String time=nhour+":"+nminute;
+                String nhour = String.valueOf(hourOfDay);
+                String nminute = String.valueOf(minute);
+                if (hourOfDay < 10) nhour = "0" + nhour;
+                if (minute < 10) nminute = "0" + nminute;
+                String time = nhour + ":" + nminute;
                 end.setText(time);
             }
         };
 
 
-        et_date_set=new DatePickerDialog.OnDateSetListener() {
+        et_date_set = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String nday=String.valueOf(dayOfMonth);
+                String nday = String.valueOf(dayOfMonth);
                 month++;
-                String nmonth= String.valueOf(month);
+                String nmonth = String.valueOf(month);
 
-                if(dayOfMonth<10)nday="0"+dayOfMonth;
-                if(month<10)nmonth="0"+String.valueOf(month);
-                String date1=year+"-"+nmonth+"-"+nday;
+                if (dayOfMonth < 10) nday = "0" + dayOfMonth;
+                if (month < 10) nmonth = "0" + String.valueOf(month);
+                String date1 = year + "-" + nmonth + "-" + nday;
                 date.setText(date1);
             }
         };
@@ -183,19 +184,19 @@ int type;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                long d=0;
-                long s=0;
-                long e=0;
+                long d = 0;
+                long s = 0;
+                long e = 0;
                 try {
-                    d=parser.parseToMillDate(date.getText().toString());
-                    s=parser.parseToMillTime(start.getText().toString());
-                    e=parser.parseToMillTime(end.getText().toString());
+                    d = parser.parseToMillDate(date.getText().toString());
+                    s = parser.parseToMillTime(start.getText().toString());
+                    e = parser.parseToMillTime(end.getText().toString());
                 } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
-                String n=name.getText().toString();
-                String t=title.getText().toString();
-                if(!TextUtils.isEmpty(n)) {
+                String n = name.getText().toString();
+                String t = title.getText().toString();
+                if (!TextUtils.isEmpty(n)) {
                     SQLiteDatabase database = dbHelper.getReadableDatabase();
 
                     database.delete(TB_NAME, KEY_ID + " = ?", new String[]{String.valueOf(id)});
@@ -217,9 +218,6 @@ int type;
             }
         });
     }
-
-
-
     Notes getNote(){
         Notes note=null;
 

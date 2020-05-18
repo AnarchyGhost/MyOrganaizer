@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_DATE;
-import static com.anarchyghost.myapplication.db.DBHelper.KEY_TIMEBEG;
-import static com.anarchyghost.myapplication.db.DBHelper.KEY_TYPE;
 
 public class BirthDayAdapter extends RecyclerView.Adapter<BirthDayAdapter.ViewHolder>{
     private List<Birthday> birthdays = new ArrayList<>();
@@ -45,10 +43,10 @@ public class BirthDayAdapter extends RecyclerView.Adapter<BirthDayAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Birthday BirthdayInfo = birthdays.get(position);
-        holder.itemView.setTag(BirthdayInfo);
-        holder.nameTv.setText(BirthdayInfo.getName());
-        holder.begTv.setText(parser.parseToMonth(BirthdayInfo.getDate()));
+        Birthday birthdayInfo = birthdays.get(position);
+        holder.itemView.setTag(birthdayInfo);
+        holder.nameTv.setText(birthdayInfo.getName());
+        holder.begTv.setText(parser.parseToMonth(birthdayInfo.getDate()));
     }
 
     @Override

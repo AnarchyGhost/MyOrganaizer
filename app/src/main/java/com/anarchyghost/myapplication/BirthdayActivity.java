@@ -17,13 +17,9 @@ import com.anarchyghost.myapplication.db.DBHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import static com.anarchyghost.myapplication.db.DBHelper.TB_BD_NAME;
-import static com.anarchyghost.myapplication.db.DBHelper.TB_NAME;
 
 public class BirthdayActivity extends AppCompatActivity {
 

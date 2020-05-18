@@ -16,6 +16,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME= "NotesDB";
     public static final String TB_NAME= "Notes";
     public static final String TB_BD_NAME="BirthDay";
+  /*  public static final String TB_PH_NAME="Photo";
+    public static final String KEY_PID="pid";
+    public static final String KEY_PATH="path";*/
     public static final String KEY_ID= "_id";
     public static final String KEY_TYPE= "type";
     public static final String KEY_NAME= "name";
@@ -35,6 +38,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table "+TB_NAME+"("+KEY_ID+" integer primary key,"+KEY_TYPE+" integer,"+
                 KEY_NAME+" text,"+KEY_TEXT+" text,"+KEY_TIMEBEG+" integer,"+KEY_TIMEEND+" integer,"+KEY_DATE+" integer,"+KEY_ISDONE+" integer"+")");
         db.execSQL("create table "+TB_BD_NAME+"("+KEY_ID+" integer primary key,"+KEY_NAME+" text,"+KEY_DATE+" integer"+")");
+       // db.execSQL("create table "+TB_PH_NAME+"("+KEY_ID+" integer primary key,"+KEY_PATH+" text,"+KEY_PID+" integer"+")");
+
     }
 
     @Override
