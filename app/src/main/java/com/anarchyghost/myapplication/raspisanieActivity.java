@@ -53,8 +53,10 @@ public class raspisanieActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener et_date_set;
     DatePickerDialog.OnDateSetListener et_date_end_set;
     TimePickerDialog.OnTimeSetListener et_beg_set;
+    TimePickerDialog.OnTimeSetListener et_end_set;
     int c = 0;
     int t;
+    int g;
     String tx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,28 +117,44 @@ public class raspisanieActivity extends AppCompatActivity {
             end.get(i).setText(parser.parseToTime(lessons.get(i).getEnd()));
             name.get(i).setText(lessons.get(i).getName());
         }
-        for (int i=0;i<6;i++){
-            final int j=i;
+        for (int i=0;i<6;i++) {
+            final int j = i;
 
-            t=i;
+            t = i;
             start.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final int consta=j;
-                    Calendar calendar=Calendar.getInstance();
-                    int hour= calendar.get(Calendar.HOUR);
-                    int minute= calendar.get(Calendar.MINUTE);
-                    int sec=calendar.get(Calendar.SECOND);
-                    TimePickerDialog dialog = new TimePickerDialog(raspisanieActivity.this,R.style.Theme_AppCompat_Dialog , et_beg_set,
-                            hour,minute,true);
+                    final int consta = j;
+                    Calendar calendar = Calendar.getInstance();
+                    int hour = calendar.get(Calendar.HOUR);
+                    int minute = calendar.get(Calendar.MINUTE);
+                    int sec = calendar.get(Calendar.SECOND);
+                    TimePickerDialog dialog = new TimePickerDialog(raspisanieActivity.this, R.style.Theme_AppCompat_Dialog, et_beg_set,
+                            hour, minute, true);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
-                    Log.d("POS:","POS:"+j);
-                    t=j;
+                    Log.d("POS:", "POS:" + j);
+                    t = j;
                 }
             });
-
+            g = i;
+            end.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final int consta = j;
+                    Calendar calendar = Calendar.getInstance();
+                    int hour = calendar.get(Calendar.HOUR);
+                    int minute = calendar.get(Calendar.MINUTE);
+                    int sec = calendar.get(Calendar.SECOND);
+                    TimePickerDialog dialog = new TimePickerDialog(raspisanieActivity.this, R.style.Theme_AppCompat_Dialog, et_end_set,
+                            hour, minute, true);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
+                    Log.d("POS:", "POS:" + j);
+                    g = j;
                 }
+            });
+        }
         et_beg_set=new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -151,7 +169,20 @@ public class raspisanieActivity extends AppCompatActivity {
             }
 
         };
+            et_end_set=new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String nhour = String.valueOf(hourOfDay);
+                    String nminute = String.valueOf(minute);
+                    if (hourOfDay < 10) nhour = "0" + nhour;
+                    if (minute < 10) nminute = "0" + nminute;
+                    String time = nhour + ":" + nminute;
+                    Log.d("TIME", time);
+                    tx = time;
+                    end.get(g).setText(time);
+                }
 
+            };
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -6,21 +6,27 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_event_note_black_24dp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdderBirthdayActivity"></activity>
-        <activity android:name=".BirthdayActivity" />
+        <activity android:name=".AdderBirthdayActivity"
+            android:label="День рождения"></activity>
+        <activity android:name=".BirthdayActivity"
+            android:label="Дни рождения"/>
 
         <service
             android:name=".NotificationService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".NotDoneActivity" />
-        <activity android:name=".raspisanieActivity" />
-        <activity android:name=".TextEditorActivity" />
-        <activity android:name=".TextNotesActivity" />
+        <activity android:name=".NotDoneActivity"
+            android:label="Невыполненные дела"></activity>
+        <activity android:name=".raspisanieActivity"
+            android:label="Расписание"/>
+        <activity android:name=".TextEditorActivity"
+            android:label="Тестовые заметки"/>
+        <activity android:name=".TextNotesActivity"
+            android:label="Текстовые заметки"/>
         <activity android:name=".EditorActivity" />
         <activity android:name=".AdderTodoActivity" />
         <activity android:name=".AdderTextActivity" />
