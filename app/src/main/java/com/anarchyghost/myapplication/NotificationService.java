@@ -87,11 +87,11 @@ public class NotificationService extends Service {
                         try {
                             Notes note=notes.get(i);
                             if(note.getStart()-parser.parseToMillTime(parser.getDateTime())<=600000 && note.getStart()-parser.parseToMillTime(parser.getDateTime())>=0) {
-                                Intent intent=new Intent(new Intent(getApplicationContext(), MainActivity.class));
+                                Intent intent=new Intent(new Intent(getApplicationContext(), EditorActivity.class)).putExtra("id",note.getId());
                                 NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.putExtra("id",note.getId());
-                                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),1,intent,PendingIntent.FLAG_IMMUTABLE);
                                 switch (note.getType()) {
                                     case TYPE_TODO:
                                         NotificationCompat.Builder notificationBuilder =
@@ -110,7 +110,6 @@ public class NotificationService extends Service {
                                         break;
                                     case TYPE_LESSON:
                                         NotificationCompat.Builder notificationBuildere =
-                                     notificationBuildere =
                                                 new NotificationCompat.Builder(getApplicationContext(), "channel_id")
                                                         .setAutoCancel(true)
                                                         .setDefaults(Notification.DEFAULT_SOUND)

@@ -218,10 +218,16 @@ public class raspisanieActivity extends AppCompatActivity {
                 } else {
                     try {
                         addNotes(dbHelper);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    try {
                         setNotes(dbHelper,parser.parseToMillDate(tv1.getText().toString()),parser.parseToMillDate(tv2.getText().toString()));
                         finish();
                     } catch (ParseException e) {
                         e.printStackTrace();
+                        tv1.setText("УСТАНОВИТЕ ДАТУ!!!");
+                        tv2.setText("УСТАНОВИТЕ ДАТУ!!!");
                     }
                 }
             }
@@ -229,11 +235,6 @@ public class raspisanieActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    addNotes(dbHelper);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
                 c--;
                 for(int i=0;i<6;i++){
                     name.get(i).setHint("Название урока");
@@ -243,6 +244,12 @@ public class raspisanieActivity extends AppCompatActivity {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
+                }
+                try {
+                    addNotes(dbHelper);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+
                 }
                 lessons = getNotes(dbHelper, c);
                 for (int i = 0; i < lessons.size(); i++) {

@@ -14,15 +14,11 @@
         <activity android:name=".BirthdayActivity"
             android:label="Дни рождения"/>
 
-       <!-- <service
+       <service
             android:name=".NotificationService"
             android:enabled="true"
-            android:exported="true" />-->
+            android:exported="true" />
 
-        <service android:name=".NotificationService"
-            android:description="@string/app_name"
-            android:enabled="true"
-            android:label="Notification" />
 
         <activity android:name=".NotDoneActivity"
             android:label="Невыполненные дела"></activity>
