@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -110,7 +111,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder>{
         private final TextView begTv;
         private final TextView enTv;
         private final TextView deadTv;
-        private final LinearLayout linearLayout;
+        private final RelativeLayout linearLayout;
 
 
         public ViewHolder(final View itemView) {

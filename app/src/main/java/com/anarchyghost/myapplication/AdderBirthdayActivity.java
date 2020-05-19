@@ -108,6 +108,8 @@ public class AdderBirthdayActivity extends AppCompatActivity {
                     database.insert(DBHelper.TB_BD_NAME, null, contentValues);
 
                     finish();
+                }else{
+                    et_name.setHint("Введите имя");
                 }
             }
         });

@@ -103,7 +103,7 @@ Parser parser;
         dbHelper= new DBHelper(this);
 
        // SQLiteDatabase database=dbHelper.getWritableDatabase();
-       this.deleteDatabase(DB_NAME);
+       //this.deleteDatabase(DB_NAME);
 
         setContentView(R.layout.activity_main);
 

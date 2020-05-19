@@ -135,6 +135,8 @@ public class AdderTodoActivity extends AppCompatActivity {
                     database.insert(DBHelper.TB_NAME, null, contentValues);
 
                     finish();
+                }else {
+                    et_name.setHint("Введите название задачи");
                 }
             }
         });

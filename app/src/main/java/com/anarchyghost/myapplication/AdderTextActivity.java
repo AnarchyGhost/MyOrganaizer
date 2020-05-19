@@ -53,6 +53,8 @@ public class AdderTextActivity extends AppCompatActivity {
                     database.insert(DBHelper.TB_NAME, null, contentValues);
 
                     finish();
+                }else{
+                    et_text.setHint("Введите текст");
                 }
             }
         });
