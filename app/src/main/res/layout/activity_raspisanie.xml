@@ -8,187 +8,365 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="180dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight=".3"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/start1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/end1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-            <EditText
-                android:id="@+id/name1"
-                android:layout_weight=".7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight=".3"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/start2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/end2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <EditText
-            android:id="@+id/name2"
-            android:layout_weight=".7"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>   <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_weight=".3"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:layout_height="36dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:gravity="center"/>
 
         <TextView
-            android:id="@+id/start3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:id="@+id/tv1"
+            android:layout_height="72dp"
+            android:layout_width="match_parent"
+            android:text="Дата начала"
+            android:textSize="21sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            />
         <TextView
-            android:id="@+id/end3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:id="@+id/tv2"
+            android:layout_height="72dp"
+            android:layout_width="match_parent"
+            android:text="Дата окончания"
+            android:textSize="21sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            />
     </LinearLayout>
-    <EditText
-        android:id="@+id/name3"
-        android:layout_weight=".7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_weight=".3"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/start4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/end4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-    <EditText
-        android:id="@+id/name4"
-        android:layout_weight=".7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_weight=".3"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/start5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/end5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-    <EditText
-        android:id="@+id/name5"
-        android:layout_weight=".7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_weight=".3"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/start6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/end6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-    <EditText
-        android:id="@+id/name6"
-        android:layout_weight=".7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <Button
-            android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="72dp"
             android:layout_height="match_parent"
-            android:layout_weight=".5"
-            android:id="@+id/prev"
-            android:visibility="invisible"></Button>
-        <Button
+            android:orientation="vertical"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/start_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Start"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/end_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="End"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_weight=".75"
             android:layout_height="match_parent"
-            android:layout_weight=".5"
-            android:id="@+id/next"
-            android:visibility="invisible"></Button>
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:lines="2"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/start_tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Start"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/end_tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="End"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight=".75"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:lines="2"
+                android:id="@+id/name_tv1"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/start_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Start"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/end_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="End"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight=".75"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/name_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:lines="2"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/start_tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Start"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/end_tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="End"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight=".75"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/name_tv3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:lines="2"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/start_tv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Start"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/end_tv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="End"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight=".75"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/name_tv4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:lines="2"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/start_tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Start"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/end_tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="End"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight=".75"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/name_tv5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:lines="2"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+    <Button
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_weight=".5"
+        android:layout_height="match_parent"
+        android:id="@+id/btn1"/>
+    <Button
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_weight=".5"
+        android:layout_height="match_parent"
+        android:id="@+id/btn2"/>
+</LinearLayout>
+
 </LinearLayout>

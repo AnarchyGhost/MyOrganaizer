@@ -16,6 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME= "NotesDB";
     public static final String TB_NAME= "Notes";
     public static final String TB_BD_NAME="BirthDay";
+    public static final String TB_CN_NAME="ConstLessons";
   /*  public static final String TB_PH_NAME="Photo";
     public static final String KEY_PID="pid";
     public static final String KEY_PATH="path";*/
@@ -27,6 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_TIMEBEG= "time";
     public static final String KEY_TIMEEND= "timeend";
     public static final String KEY_ISDONE="isdone";
+    public static final String KEY_ISCONST="isconst";
 
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -36,10 +38,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table "+TB_NAME+"("+KEY_ID+" integer primary key,"+KEY_TYPE+" integer,"+
-                KEY_NAME+" text,"+KEY_TEXT+" text,"+KEY_TIMEBEG+" integer,"+KEY_TIMEEND+" integer,"+KEY_DATE+" integer,"+KEY_ISDONE+" integer"+")");
+                KEY_NAME+" text,"+KEY_TEXT+" text,"+KEY_TIMEBEG+" integer,"+KEY_TIMEEND+" integer,"+KEY_DATE+" integer,"+KEY_ISDONE+" integer,"+KEY_ISCONST+" integer"+")");
         db.execSQL("create table "+TB_BD_NAME+"("+KEY_ID+" integer primary key,"+KEY_NAME+" text,"+KEY_DATE+" integer"+")");
        // db.execSQL("create table "+TB_PH_NAME+"("+KEY_ID+" integer primary key,"+KEY_PATH+" text,"+KEY_PID+" integer"+")");
-
+        db.execSQL("create table "+TB_CN_NAME+"("+KEY_ID+" integer primary key,"+
+                KEY_NAME+" text,"+KEY_TIMEBEG+" integer,"+KEY_TIMEEND+" integer,"+KEY_DATE+" integer"+")");
     }
 
     @Override

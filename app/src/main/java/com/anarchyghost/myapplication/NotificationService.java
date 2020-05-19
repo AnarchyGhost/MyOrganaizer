@@ -188,7 +188,7 @@ public class NotificationService extends Service {
             }
         };
 
-        timer1.schedule(tTask1, 1001, 432000000);
+        timer1.schedule(tTask1, 1542, 432000000);
     }
 
     public static void createChannelIfNeeded(NotificationManager manager) {

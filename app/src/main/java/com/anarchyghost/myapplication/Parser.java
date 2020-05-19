@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -87,5 +88,14 @@ public String parseToDateTime(long d){
                 "yyyy-MM-dd HH:mm", Locale.getDefault());
         Date moment = dateFormat.parse(d);
         return moment.getTime();
+    }
+    public int parseToDayOfWeek(long d){
+            Calendar c = Calendar.getInstance();
+            Date date=new Date(d);
+            c.setTime(date);
+            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+            if (dayOfWeek==1)dayOfWeek=6;
+            else dayOfWeek-=2;
+            return dayOfWeek;
     }
     }

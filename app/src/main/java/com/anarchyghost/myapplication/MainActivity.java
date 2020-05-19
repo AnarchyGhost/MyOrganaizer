@@ -103,7 +103,7 @@ Parser parser;
         dbHelper= new DBHelper(this);
 
        // SQLiteDatabase database=dbHelper.getWritableDatabase();
-       // this.deleteDatabase(DB_NAME);
+       this.deleteDatabase(DB_NAME);
 
         setContentView(R.layout.activity_main);
 
@@ -218,8 +218,11 @@ Parser parser;
             Intent intent=new Intent(this,NotDoneActivity.class);
             startActivity(intent);
             return true;
-        } else {
+        } else if(id== R.id.action_birthdays){
             Intent intent=new Intent(this,BirthdayActivity.class);
+            startActivity(intent);
+        } else{
+            Intent intent=new Intent(this,raspisanieActivity.class);
             startActivity(intent);
         }
 

@@ -12,4 +12,9 @@
         android:orderInCategory="100"
         android:title="Дни рождения"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_raspis"
+        android:orderInCategory="100"
+        android:title="Настроить расписание"
+        app:showAsAction="never" />
 </menu>
