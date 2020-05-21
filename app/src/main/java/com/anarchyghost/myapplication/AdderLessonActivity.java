@@ -98,7 +98,7 @@ Parser parser=new Parser();
                 int minute= calendar.get(Calendar.MINUTE);
                 int sec=calendar.get(Calendar.SECOND);
 
-                TimePickerDialog dialog = new TimePickerDialog(AdderLessonActivity.this,R.style.Theme_AppCompat_Dialog , et_beg_set,
+                TimePickerDialog dialog = new TimePickerDialog(AdderLessonActivity.this,R.style.Theme_AppCompat_Dialog , et_end_set,
                         hour,minute,true);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -115,6 +115,17 @@ Parser parser=new Parser();
                 if(minute<10)nminute="0"+nminute;
                 String time=nhour+":"+nminute;
                 et_start.setText(time);
+            }
+        };
+        et_beg_set=new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String nhour=String.valueOf(hourOfDay);
+                String nminute=String.valueOf(minute);
+                if(hourOfDay<10)nhour="0"+nhour;
+                if(minute<10)nminute="0"+nminute;
+                String time=nhour+":"+nminute;
+                et_end.setText(time);
             }
         };
 

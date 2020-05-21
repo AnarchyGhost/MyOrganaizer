@@ -202,6 +202,7 @@ public class raspisanieActivity extends AppCompatActivity {
                     lessons = getNotes(dbHelper, c);
                     for(int i=0;i<6;i++){
                         name.get(i).setHint("Название урока");
+                        name.get(i).setText("");
                         try {
                             start.get(i).setText(parser.parseToTime(parser.parseToMillTime("09:00")-parser.parseToMillTime("01:20")*i));
                             end.get(i).setText(parser.parseToTime(parser.parseToMillTime("10:30")-parser.parseToMillTime("01:20")*i));
@@ -235,8 +236,14 @@ public class raspisanieActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    addNotes(dbHelper);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 c--;
                 for(int i=0;i<6;i++){
+                    name.get(i).setText("");
                     name.get(i).setHint("Название урока");
                     try {
                         start.get(i).setText(parser.parseToTime(parser.parseToMillTime("09:00")-parser.parseToMillTime("01:20")*i));
@@ -245,12 +252,7 @@ public class raspisanieActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                try {
-                    addNotes(dbHelper);
-                } catch (ParseException e) {
-                    e.printStackTrace();
 
-                }
                 lessons = getNotes(dbHelper, c);
                 for (int i = 0; i < lessons.size(); i++) {
                     start.get(i).setText(parser.parseToTime(lessons.get(i).getStart()));

@@ -174,8 +174,8 @@ public class NotificationService extends Service {
                                                     .setSmallIcon(R.drawable.ic_event_note_black_24dp)
                                                     .setWhen(System.currentTimeMillis())
                                                     .setContentIntent(pendingIntent)
-                                                    .setContentTitle("Сегодня день рождения!!!!")
-                                                    .setContentText("День рождения у: "+birthday.getName() +", поздравь его!!")
+                                                    .setContentTitle(birthday.getName()+" отмечает день рождения!")
+                                                    .setContentText("Не забудьте поздравить!")
                                                     .setPriority(PRIORITY_HIGH)
                                                     .setDefaults(Notification.DEFAULT_SOUND);
                                     createChannelIfNeeded(notificationManager);
