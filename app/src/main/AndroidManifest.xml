@@ -22,7 +22,7 @@
 
         <activity android:name=".NotDoneActivity"
             android:label="Невыполненные дела"></activity>
-        <activity android:name=".raspisanieActivity"
+        <activity android:name=".RaspisanieActivity"
             android:label="Расписание"/>
         <activity android:name=".TextEditorActivity"
             android:label="Тестовые заметки"/>

@@ -31,14 +31,13 @@ import static com.anarchyghost.myapplication.NotesAdapter.TYPE_LESSON;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_DATE;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_ISCONST;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_ISDONE;
-import static com.anarchyghost.myapplication.db.DBHelper.KEY_TEXT;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_TIMEBEG;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_TIMEEND;
 import static com.anarchyghost.myapplication.db.DBHelper.KEY_TYPE;
 import static com.anarchyghost.myapplication.db.DBHelper.TB_CN_NAME;
 import static com.anarchyghost.myapplication.db.DBHelper.TB_NAME;
 
-public class raspisanieActivity extends AppCompatActivity {
+public class RaspisanieActivity extends AppCompatActivity {
     List<TextView> start = new ArrayList();
     List<TextView> end = new ArrayList();
     List<EditText> name = new ArrayList();
@@ -129,7 +128,7 @@ public class raspisanieActivity extends AppCompatActivity {
                     int hour = calendar.get(Calendar.HOUR);
                     int minute = calendar.get(Calendar.MINUTE);
                     int sec = calendar.get(Calendar.SECOND);
-                    TimePickerDialog dialog = new TimePickerDialog(raspisanieActivity.this, R.style.Theme_AppCompat_Dialog, et_beg_set,
+                    TimePickerDialog dialog = new TimePickerDialog(RaspisanieActivity.this, R.style.Theme_AppCompat_Dialog, et_beg_set,
                             hour, minute, true);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
@@ -146,7 +145,7 @@ public class raspisanieActivity extends AppCompatActivity {
                     int hour = calendar.get(Calendar.HOUR);
                     int minute = calendar.get(Calendar.MINUTE);
                     int sec = calendar.get(Calendar.SECOND);
-                    TimePickerDialog dialog = new TimePickerDialog(raspisanieActivity.this, R.style.Theme_AppCompat_Dialog, et_end_set,
+                    TimePickerDialog dialog = new TimePickerDialog(RaspisanieActivity.this, R.style.Theme_AppCompat_Dialog, et_end_set,
                             hour, minute, true);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
@@ -273,7 +272,7 @@ public class raspisanieActivity extends AppCompatActivity {
                 int month= calendar.get(Calendar.MONTH);
                 int dat=calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(raspisanieActivity.this,R.style.Theme_AppCompat_Dialog , et_date_set,
+                DatePickerDialog dialog = new DatePickerDialog(RaspisanieActivity.this,R.style.Theme_AppCompat_Dialog , et_date_set,
                         year,month,dat);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -288,7 +287,7 @@ public class raspisanieActivity extends AppCompatActivity {
                 int month= calendar.get(Calendar.MONTH);
                 int dat=calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(raspisanieActivity.this,R.style.Theme_AppCompat_Dialog , et_date_end_set,
+                DatePickerDialog dialog = new DatePickerDialog(RaspisanieActivity.this,R.style.Theme_AppCompat_Dialog , et_date_end_set,
                         year,month,dat);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

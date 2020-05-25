@@ -117,7 +117,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder>{
         public ViewHolder(final View itemView) {
             super(itemView);
             final Context context = itemView.getContext();
-            LayoutInflater layoutInflater = LayoutInflater.from(context);
             nameTv = itemView.findViewById(R.id.name_tv);
             versionTv = itemView.findViewById(R.id.version_tv);
             begTv = itemView.findViewById(R.id.start_tv);

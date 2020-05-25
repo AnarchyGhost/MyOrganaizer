@@ -34,27 +34,6 @@ public class TextNotesActivity extends AppCompatActivity {
     String chosendata;
     Parser parser;
 
-    public int getYear() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy", Locale.getDefault());
-        Date date = new Date();
-        return Integer.parseInt(dateFormat.format(date));
-    }
-
-    public int getMonth() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "MM", Locale.getDefault());
-        Date date = new Date();
-        return Integer.parseInt(dateFormat.format(date));
-    }
-
-    public int getDay() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "dd", Locale.getDefault());
-        Date date = new Date();
-        return Integer.parseInt(dateFormat.format(date));
-    }
-
     @Override
     protected void onResume() {
         try {

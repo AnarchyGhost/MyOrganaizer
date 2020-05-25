@@ -3,7 +3,6 @@ package com.anarchyghost.myapplication;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -20,13 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.IBinder;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,7 +32,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static com.anarchyghost.myapplication.db.DBHelper.DB_NAME;
 import static com.anarchyghost.myapplication.db.DBHelper.TB_NAME;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,6 +70,16 @@ Parser parser;
         super.onResume();
     }
 
+    protected void onDestroy() {
+        stopService(new Intent(this, NotificationService.class));
+        super.onDestroy();
+
+    }
+    protected void onPause() {
+        stopService(new Intent(this, NotificationService.class));
+        super.onPause();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,9 +107,6 @@ Parser parser;
         recyclerView=findViewById(R.id.shown);
 
         dbHelper= new DBHelper(this);
-
-       // SQLiteDatabase database=dbHelper.getWritableDatabase();
-       //this.deleteDatabase(DB_NAME);
 
         setContentView(R.layout.activity_main);
 
@@ -222,7 +225,7 @@ Parser parser;
             Intent intent=new Intent(this,BirthdayActivity.class);
             startActivity(intent);
         } else{
-            Intent intent=new Intent(this,raspisanieActivity.class);
+            Intent intent=new Intent(this, RaspisanieActivity.class);
             startActivity(intent);
         }
 

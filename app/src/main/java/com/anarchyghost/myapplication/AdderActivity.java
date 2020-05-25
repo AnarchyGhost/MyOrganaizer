@@ -12,23 +12,14 @@ import android.widget.ImageButton;
 import com.anarchyghost.myapplication.db.DBHelper;
 
 public class AdderActivity extends AppCompatActivity implements View.OnClickListener {
-    Button addbtn;
     ImageButton todo;
     ImageButton lesson;
-    Button txt;
-    EditText et_name;
-    EditText et_text;
     DBHelper dbHelper;
     String date;
-    private int mType=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adder);
-
-
-        et_name = (EditText) findViewById(R.id.edit_name);
-        et_text = (EditText) findViewById(R.id.edit_text);
 
         todo = findViewById(R.id.button3);
         lesson = findViewById(R.id.button);

@@ -53,8 +53,6 @@ public class NotDoneActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_not_done);
 
-            //this.deleteDatabase(DB_NAME);
-
             parser=new Parser();
             notesAdapter = new NotesAdapter();
             chosendata=parser.getDate();
